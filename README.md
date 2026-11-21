@@ -1,6 +1,7 @@
 <Escuela Normal Superior Prof. José E. Medrano R.>
-<Teacher Vanessa Pando>
-<Alumna: Tania Jocelin Ontiveros Quintana>
+<Teacher: PANDURO MIJAREZ TALINA
+VANESSA>
+<Alumna: Ontiveros Quintana Tania Jocelin>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
