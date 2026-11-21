@@ -1,513 +1,420 @@
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Mexican Revolution - Animated Story</title>
+<title>The Mexican Revolution - An Animated Story</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
- margin:0;
- background:#f4ead9;
- color:#332b25;
- font-family:Georgia,serif;
+* {
+    box-sizing: border-box;
 }
 
-header{
- background:#963f35;
- color:white;
- text-align:center;
- padding:32px 15px;
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #f5e8cf;
+    color: #392b20;
 }
 
-header h1{
- font-size:clamp(2rem,5vw,3.7rem);
- margin:12px 0;
+header {
+    text-align: center;
+    padding: 28px 15px;
+    background: #783d2b;
+    color: white;
 }
 
-header p{
- font-family:Arial,sans-serif;
+header h1 {
+    margin: 0;
+    font-size: clamp(25px, 5vw, 42px);
 }
 
-.eyebrow{
- font:bold 12px Arial;
- letter-spacing:3px;
+header p {
+    margin-bottom: 0;
 }
 
-main{
- max-width:1100px;
- margin:auto;
- padding:20px;
+main {
+    max-width: 1050px;
+    margin: auto;
+    padding: 20px;
 }
 
-h2{color:#376c50}
-
-.scene{
- position:relative;
- height:410px;
- overflow:hidden;
- border:7px solid white;
- border-radius:20px;
- background:linear-gradient(#8ed0dc 0 65%,#c5a06c 65%);
- box-shadow:0 8px 25px #0002;
+h2 {
+    color: #783d2b;
 }
 
-.sun{
- position:absolute;
- top:9%;
- right:10%;
- width:65px;
- height:65px;
- border-radius:50%;
- background:#ffdc79;
- box-shadow:0 0 0 15px #ffdc7935;
+.stage {
+    position: relative;
+    height: 390px;
+    overflow: hidden;
+    border: 5px solid #783d2b;
+    border-radius: 18px;
+    background: linear-gradient(#83c9e8 0%, #c8e8e7 65%, #e8cf8c 65%);
 }
 
-.cloud{
- position:absolute;
- top:18%;
- left:13%;
- width:100px;
- height:28px;
- background:white;
- border-radius:30px;
+.sun {
+    position: absolute;
+    top: 25px;
+    right: 65px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #ffd45d;
 }
 
-.cloud:before,.cloud:after{
- content:"";
- position:absolute;
- background:white;
- border-radius:50%;
+.cloud {
+    position: absolute;
+    top: 60px;
+    left: 12%;
+    width: 100px;
+    height: 30px;
+    background: white;
+    border-radius: 30px;
 }
 
-.cloud:before{
- width:40px;
- height:40px;
- top:-18px;
- left:15px;
+.cloud:before,
+.cloud:after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 50%;
 }
 
-.cloud:after{
- width:48px;
- height:45px;
- top:-20px;
- right:10px;
+.cloud:before {
+    width: 42px;
+    height: 42px;
+    top: -20px;
+    left: 18px;
 }
 
-.mountains{
- position:absolute;
- bottom:20%;
- left:-10%;
- width:120%;
- height:110px;
- background:#78976d;
- border-radius:50% 50% 0 0;
+.cloud:after {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    right: 15px;
 }
 
-.floor{
- position:absolute;
- bottom:0;
- width:100%;
- height:23%;
- background:#c8a16b;
+.mountain {
+    position: absolute;
+    bottom: 115px;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 170px solid #8e9c63;
 }
 
-.house{
- position:absolute;
- bottom:22%;
- left:7%;
- width:100px;
- height:75px;
- background:#f2d5a5;
- border:4px solid #81543b;
+.mountain.one {
+    left: -50px;
 }
 
-.house:before{
- content:"";
- position:absolute;
- top:-35px;
- left:-12px;
- border-left:58px solid transparent;
- border-right:58px solid transparent;
- border-bottom:36px solid #a94b3c;
+.mountain.two {
+    right: -40px;
+    border-bottom-color: #a9a66d;
 }
 
-.house:after{
- content:"";
- position:absolute;
- bottom:0;
- left:35px;
- width:24px;
- height:38px;
- background:#81543b;
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    background: #c49a54;
 }
 
-.cactus{
- position:absolute;
- bottom:22%;
- right:12%;
- width:18px;
- height:80px;
- background:#397653;
- border-radius:10px;
+.house {
+    position: absolute;
+    bottom: 95px;
+    left: 8%;
+    width: 105px;
+    height: 75px;
+    background: #d7a36b;
+    border: 3px solid #71432c;
 }
 
-.cactus:before,.cactus:after{
- content:"";
- position:absolute;
- width:25px;
- height:24px;
- border:9px solid #397653;
- border-bottom:0;
- border-radius:20px 20px 0 0;
+.house:before {
+    content: "";
+    position: absolute;
+    top: -45px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 48px solid #8b4430;
 }
 
-.cactus:before{
- left:-20px;
- top:25px;
- transform:rotate(-90deg);
+.house:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 38px;
+    width: 25px;
+    height: 42px;
+    background: #68422e;
 }
 
-.cactus:after{
- right:-20px;
- top:40px;
- transform:rotate(90deg);
+.cactus {
+    position: absolute;
+    bottom: 90px;
+    right: 12%;
+    width: 22px;
+    height: 90px;
+    background: #397b49;
+    border-radius: 15px;
 }
 
-.scene-title{
- position:absolute;
- top:15px;
- left:15px;
- padding:9px 13px;
- border-radius:8px;
- background:#fff3dc;
- color:#813a31;
- font:bold 12px Arial;
- z-index:5;
+.cactus:before,
+.cactus:after {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 45px;
+    border: 10px solid #397b49;
+    border-bottom: 0;
+    border-radius: 20px 20px 0 0;
 }
 
-.cast{
- position:absolute;
- bottom:16%;
- left:0;
- right:0;
- display:flex;
- justify-content:center;
- align-items:end;
- gap:30px;
- height:220px;
+.cactus:before {
+    left: -22px;
+    top: 25px;
 }
 
-.character{
- position:relative;
- width:100px;
- height:205px;
- animation:float 2s infinite ease-in-out;
+.cactus:after {
+    right: -22px;
+    top: 10px;
 }
 
-.character:nth-child(2){animation-delay:.4s}
-.character:nth-child(3){animation-delay:.8s}
-
-.head{
- position:absolute;
- top:12px;
- left:27px;
- width:52px;
- height:57px;
- background:#bd8058;
- border:3px solid #684532;
- border-radius:45%;
- z-index:3;
+.character {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 105px;
+    height: 190px;
+    transition: left .5s ease;
+    animation: idle 2s infinite ease-in-out;
 }
 
-.hair{
- position:absolute;
- top:5px;
- left:23px;
- width:60px;
- height:25px;
- background:#30241e;
- border-radius:50% 50% 15% 15%;
- z-index:4;
+@keyframes idle {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
 }
 
-.hat{
- position:absolute;
- top:0;
- left:10px;
- width:82px;
- height:17px;
- background:#e9d4a5;
- border:3px solid #654a35;
- border-radius:50%;
- z-index:5;
+.head {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    width: 58px;
+    height: 65px;
+    border-radius: 45% 45% 48% 48%;
+    background: #c98d62;
+    border: 2px solid #573b2a;
 }
 
-.hat:after{
- content:"";
- position:absolute;
- top:-18px;
- left:23px;
- width:28px;
- height:20px;
- background:#e9d4a5;
- border:3px solid #654a35;
- border-radius:8px;
+.hair {
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    width: 68px;
+    height: 24px;
+    border-radius: 50% 50% 15% 15%;
+    background: #38261c;
 }
 
-.eye{
- position:absolute;
- top:28px;
- left:12px;
- width:5px;
- height:5px;
- background:#241c17;
- border-radius:50%;
- box-shadow:18px 0 #241c17;
+.hat {
+    position: absolute;
+    top: -17px;
+    left: 10px;
+    width: 88px;
+    height: 15px;
+    background: #d8c49a;
+    border: 2px solid #65462b;
+    border-radius: 50%;
 }
 
-.mustache{
- position:absolute;
- top:39px;
- left:9px;
- width:31px;
- height:9px;
- border-bottom:5px solid #34231c;
- border-radius:50%;
+.hat:before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: -18px;
+    width: 44px;
+    height: 20px;
+    background: #d8c49a;
+    border: 2px solid #65462b;
+    border-radius: 50% 50% 0 0;
 }
 
-.body{
- position:absolute;
- top:66px;
- left:16px;
- width:70px;
- height:82px;
- background:var(--shirt,#52734d);
- border:3px solid #684532;
- border-radius:16px 16px 8px 8px;
- z-index:2;
+.body-character {
+    position: absolute;
+    top: 62px;
+    left: 15px;
+    width: 80px;
+    height: 105px;
+    border-radius: 15px 15px 5px 5px;
+    background: #704d3a;
+    border: 2px solid #503322;
 }
 
-.arm{
- position:absolute;
- top:76px;
- left:4px;
- width:20px;
- height:67px;
- background:#bd8058;
- border:3px solid #684532;
- border-radius:15px;
- transform:rotate(15deg);
- z-index:1;
+.arm {
+    position: absolute;
+    top: 78px;
+    width: 20px;
+    height: 75px;
+    background: #c98d62;
+    border-radius: 15px;
 }
 
-.arm.right{
- left:77px;
- transform:rotate(-15deg);
+.arm.left {
+    left: 2px;
+    transform: rotate(15deg);
 }
 
-.legs{
- position:absolute;
- top:145px;
- left:27px;
- width:20px;
- height:55px;
- background:#60452f;
- border:3px solid #392b22;
- border-radius:8px;
+.arm.right {
+    right: 2px;
+    transform: rotate(-15deg);
 }
 
-.legs:after{
- content:"";
- position:absolute;
- left:25px;
- top:-3px;
- width:20px;
- height:55px;
- background:#60452f;
- border:3px solid #392b22;
- border-radius:8px;
+.legs {
+    position: absolute;
+    top: 160px;
+    left: 25px;
+    width: 55px;
+    height: 35px;
+    background: #49362b;
+    border-radius: 5px;
 }
 
-.person-name{
- position:absolute;
- bottom:-15px;
- left:50%;
- transform:translateX(-50%);
- white-space:nowrap;
- background:#fff2d9;
- padding:4px 7px;
- border-radius:5px;
- font:bold 11px Arial;
+.character.speaking {
+    animation: speaking .35s infinite alternate;
 }
 
-.talking .arm.right{
- animation:gesture .5s infinite alternate;
+@keyframes speaking {
+    from { transform: translateX(-50%) translateY(0) rotate(-2deg); }
+    to { transform: translateX(-50%) translateY(-7px) rotate(2deg); }
 }
 
-@keyframes float{
- 0%,100%{transform:translateY(0)}
- 50%{transform:translateY(-7px)}
+.dialogue {
+    background: white;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 14px;
+    min-height: 125px;
+    box-shadow: 0 3px 10px #0002;
 }
 
-@keyframes gesture{
- from{transform:rotate(-15deg)}
- to{transform:rotate(-65deg)}
+#speaker {
+    font-weight: bold;
+    color: #a34c2d;
+    margin-bottom: 8px;
 }
 
-.dialogue{
- background:#fffaf0;
- padding:22px;
- margin-top:15px;
- border-radius:16px;
- box-shadow:0 5px 20px #55422b18;
+#dialogueText {
+    font-size: 18px;
+    line-height: 1.6;
 }
 
-.speaker{
- color:#a84438;
- font:bold 13px Arial;
- letter-spacing:2px;
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 18px 0;
 }
 
-.text{
- font-size:clamp(18px,2.5vw,23px);
- line-height:1.7;
- min-height:65px;
+button {
+    border: none;
+    padding: 12px 19px;
+    border-radius: 9px;
+    cursor: pointer;
+    background: #783d2b;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
 }
 
-.text strong,.transcript strong{
- font-weight:900;
- color:#a33128;
+button:hover {
+    background: #a85a38;
 }
 
-.text u,.transcript u{
- text-decoration-thickness:2px;
- text-decoration-color:#387052;
- text-underline-offset:4px;
+button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
 }
 
-.controls{
- display:flex;
- flex-wrap:wrap;
- justify-content:center;
- gap:12px;
- margin:20px 0;
+.voice-panel,
+.moments,
+.transcript {
+    background: white;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px #0001;
 }
 
-button,select{
- border:0;
- border-radius:25px;
- padding:12px 17px;
- font-weight:bold;
- cursor:pointer;
+.voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
 }
 
-button{
- background:#a84438;
- color:white;
+.voice-grid label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
 }
 
-button.secondary{
- background:#397052;
+.voice-grid select {
+    width: 100%;
+    margin-top: 6px;
+    padding: 8px;
+    border-radius: 7px;
+    border: 1px solid #c9b49a;
 }
 
-button:disabled{
- opacity:.4;
- cursor:not-allowed;
+.moments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
 }
 
-.progress{
- height:9px;
- background:#d8cbb8;
- border-radius:20px;
- overflow:hidden;
+.moment {
+    background: #f7ead5;
+    border-left: 5px solid #a34c2d;
+    padding: 15px;
+    border-radius: 9px;
 }
 
-.progress div{
- height:100%;
- width:0;
- background:#a84438;
- transition:width .3s;
+.moment h3 {
+    margin-top: 0;
+    color: #783d2b;
 }
 
-.section{
- background:#fffaf0;
- border-radius:18px;
- padding:25px;
- margin:30px 0;
+.transcript p {
+    line-height: 1.7;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
 }
 
-.moments{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:15px;
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #765c48;
 }
 
-.moment{
- background:#f5ead7;
- padding:15px;
- border-radius:12px;
- border-left:5px solid #a84438;
-}
+@media(max-width:600px) {
+    .stage {
+        height: 330px;
+    }
 
-.moment small{
- color:#a84438;
- font:bold 12px Arial;
-}
+    .character {
+        transform: translateX(-50%) scale(.85);
+        transform-origin: bottom center;
+    }
 
-.moment h3{margin:8px 0}
-
-.moment p{
- font:15px/1.5 Arial;
-}
-
-.voice-settings{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:14px;
-}
-
-.voice-settings label{
- display:flex;
- flex-direction:column;
- gap:7px;
- font:bold 13px Arial;
-}
-
-.voice-settings select{
- width:100%;
- background:white;
- border:1px solid #d0c1ad;
-}
-
-.voice-status{
- font:14px/1.5 Arial;
- color:#397052;
-}
-
-.transcript p{
- font:15px/1.8 Arial;
- border-bottom:1px solid #e5dac9;
- padding:8px 0;
-}
-
-.note{
- text-align:center;
- color:#786e60;
- font:13px/1.5 Arial;
- padding:15px;
-}
-
-@media(max-width:600px){
- .scene{height:340px}
- .cast{
-  gap:0;
-  transform:scale(.85);
-  transform-origin:bottom center;
- }
- .character{margin:0 -8px}
+    #dialogueText {
+        font-size: 16px;
+    }
 }
 </style>
 </head>
@@ -515,606 +422,579 @@ button:disabled{
 <body>
 
 <header>
- <div class="eyebrow">AN EDUCATIONAL ANIMATED STORY</div>
- <h1>THE MEXICAN REVOLUTION</h1>
- <p>A story of courage, freedom and change</p>
+    <h1>The Mexican Revolution</h1>
+    <p>An animated historical story</p>
 </header>
 
 <main>
 
-<section class="scene">
- <div class="sun"></div>
- <div class="cloud"></div>
- <div class="mountains"></div>
- <div class="floor"></div>
- <div class="house"></div>
- <div class="cactus"></div>
- <div class="scene-title" id="sceneTitle">CHAPTER 1</div>
- <div class="cast" id="cast"></div>
+<section>
+    <h2>🎬 The Story</h2>
+
+    <div class="stage">
+        <div class="sun"></div>
+        <div class="cloud"></div>
+        <div class="mountain one"></div>
+        <div class="mountain two"></div>
+        <div class="house"></div>
+        <div class="cactus"></div>
+        <div class="ground"></div>
+
+        <div class="character" id="character">
+            <div class="hat" id="hat"></div>
+            <div class="head"></div>
+            <div class="hair"></div>
+            <div class="body-character"></div>
+            <div class="arm left"></div>
+            <div class="arm right"></div>
+            <div class="legs"></div>
+        </div>
+    </div>
+
+    <div class="dialogue">
+        <div id="speaker">NARRATOR</div>
+        <div id="dialogueText">
+            Welcome to the story of the Mexican Revolution.
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="previousButton" onclick="previousLine()">⏮ Previous</button>
+        <button onclick="speakCurrentLine()">🔊 Speak this line</button>
+        <button id="nextButton" onclick="nextLine()">Next ⏭</button>
+        <button onclick="playStory()">▶ Play story</button>
+        <button onclick="stopStory()">■ Stop</button>
+    </div>
 </section>
 
-<section class="dialogue">
- <div class="speaker" id="speaker">NARRATOR</div>
- <div class="text" id="dialogue"></div>
+<section class="voice-panel">
+    <h2>🎙 Character voices</h2>
+    <p>
+        The narrator uses a female English voice. All the historical
+        characters use male English voices.
+    </p>
+    <div id="voiceStatus">Loading English voices...</div>
+    <div class="voice-grid" id="voiceSettings"></div>
 </section>
 
-<div class="progress">
- <div id="progressBar"></div>
-</div>
+<section class="moments">
+    <h2>📜 Six Key Historical Moments</h2>
 
-<div class="controls">
- <button id="previous">← Previous</button>
- <button id="play">▶ Play story</button>
- <button id="next">Next →</button>
- <button class="secondary" id="speak">🔊 Speak this line</button>
- <button class="secondary" id="stop">■ Stop voice</button>
-</div>
+    <div class="moments-grid">
+        <div class="moment">
+            <h3>1. The Porfiriato</h3>
+            <p>
+                Porfirio Díaz ruled Mexico for many years.
+                Economic growth occurred, but wealth and land
+                were distributed unequally.
+            </p>
+        </div>
 
-<section class="section">
- <h2>🎙️ Character voices</h2>
- <p>Each character has a preselected English voice. You can change the voice if you want.</p>
- <div id="voiceStatus" class="voice-status">Loading English voices...</div>
- <div class="voice-settings" id="voiceSettings"></div>
+        <div class="moment">
+            <h3>2. The Plan of San Luis</h3>
+            <p>
+                In 1910, Francisco I. Madero called on the Mexican
+                people to rise up against Díaz on November 20.
+            </p>
+        </div>
+
+        <div class="moment">
+            <h3>3. Díaz Leaves Power</h3>
+            <p>
+                Porfirio Díaz resigned on May 25, 1911.
+                Madero became president on November 6, 1911.
+            </p>
+        </div>
+
+        <div class="moment">
+            <h3>4. The Plan of Ayala</h3>
+            <p>
+                On November 28, 1911, Emiliano Zapata
+                demanded land reform and justice for peasants.
+            </p>
+        </div>
+
+        <div class="moment">
+            <h3>5. The Ten Tragic Days</h3>
+            <p>
+                In February 1913, a coup took place.
+                Madero and Pino Suárez were assassinated
+                on February 22.
+            </p>
+        </div>
+
+        <div class="moment">
+            <h3>6. The Constitution of 1917</h3>
+            <p>
+                On February 5, 1917, a new Constitution was
+                promulgated, including important social rights.
+            </p>
+        </div>
+    </div>
 </section>
 
-<section class="section">
- <h2>Six Important Historical Moments</h2>
-
- <div class="moments">
-
-  <article class="moment">
-   <small>01 · 1910</small>
-   <h3>The Beginning of the Revolution</h3>
-   <p>Francisco I. Madero called on Mexicans to rise against Porfirio Díaz on November 20, 1910.</p>
-  </article>
-
-  <article class="moment">
-   <small>02 · 1911</small>
-   <h3>Díaz Leaves Power</h3>
-   <p>Porfirio Díaz resigned in May 1911 after the revolutionary movement became stronger.</p>
-  </article>
-
-  <article class="moment">
-   <small>03 · 1911</small>
-   <h3>The Plan of Ayala</h3>
-   <p>Emiliano Zapata demanded land for peasants and the return of land to villages.</p>
-  </article>
-
-  <article class="moment">
-   <small>04 · 1913</small>
-   <h3>The Ten Tragic Days</h3>
-   <p>A military coup led to the fall of Madero's government. Madero and Pino Suárez were assassinated.</p>
-  </article>
-
-  <article class="moment">
-   <small>05 · 1914</small>
-   <h3>Huerta's Defeat</h3>
-   <p>Victoriano Huerta left power, BUT revolutionary groups continued to disagree about the future of Mexico.</p>
-  </article>
-
-  <article class="moment">
-   <small>06 · 1917</small>
-   <h3>The Constitution of 1917</h3>
-   <p>The new Constitution included important principles about education, land and workers' rights.</p>
-  </article>
-
- </div>
+<section class="transcript">
+    <h2>📖 Complete Story Transcript</h2>
+    <div id="fullTranscript"></div>
 </section>
-
-<section class="section transcript">
- <h2>The Complete Story</h2>
- <p>Read the complete English narration and character dialogues below.</p>
- <div id="transcript"></div>
-</section>
-
-<p class="note">
-The voices are generated by your browser. Available English voices depend on the device.
-</p>
 
 </main>
 
+<footer>
+    The Mexican Revolution | English History Project
+</footer>
+
 <script>
-
-// CHARACTER INFORMATION
-
-const characters={
- "PORFIRIO DÍAZ":{
-  color:"#79503d",hat:true,mustache:true
- },
- "MADERO":{
-  color:"#416b91",hat:false,mustache:false
- },
- "ZAPATA":{
-  color:"#386044",hat:true,mustache:true
- },
- "VILLA":{
-  color:"#94613b",hat:true,mustache:true
- },
- "HUERTA":{
-  color:"#55516e",hat:true,mustache:true
- },
- "CARRANZA":{
-  color:"#657c83",hat:true,mustache:true
- },
- "PEASANT":{
-  color:"#a17a3f",hat:true,mustache:false
- }
-};
-
-// STORY
-
-const scenes=[
-
-{
- title:"CHAPTER 1 · MEXICO UNDER PORFIRIO DÍAZ",
- people:["PORFIRIO DÍAZ","PEASANT"],
- lines:[
-  ["NARRATOR","At the beginning of the twentieth century, Mexico was ruled by Porfirio Díaz."],
-  ["NARRATOR","He had been president for many years. During his government, Mexico developed railroads, factories and industries."],
-  ["NARRATOR","HOWEVER, not everyone benefited. Rich people owned large areas of land, while many farmers and workers lived in poverty."],
-  ["PEASANT","We work every day, BUT we do not own the land. Our families need a better future!"],
-  ["NARRATOR","People were tired of inequality and the lack of political freedom. They wanted change."]
- ]
-},
-
-{
- title:"CHAPTER 2 · FRANCISCO I. MADERO",
- people:["MADERO","PEASANT"],
- lines:[
-  ["NARRATOR","One man decided to challenge the government. His name was Francisco I. Madero."],
-  ["MADERO","Mexico needs democracy! The people deserve free elections and the right to choose their president."],
-  ["NARRATOR","IN 1910, Madero published the Plan of San Luis. He called for an uprising ON November 20, 1910."],
-  ["MADERO","Mexicans, it is time to stand up and fight for a better country!"],
-  ["NARRATOR","AND so, the Mexican Revolution began."]
- ]
-},
-
-{
- title:"CHAPTER 3 · THE REVOLUTION BEGINS",
- people:["ZAPATA","VILLA","PEASANT"],
- lines:[
-  ["NARRATOR","ON November 20, 1910, people in different parts of Mexico began to rise against Díaz."],
-  ["NARRATOR","Farmers, workers and revolutionary leaders joined the movement."],
-  ["NARRATOR","In the north, Pancho Villa became an important revolutionary leader. In the south, Emiliano Zapata fought for the rights of peasants."],
-  ["VILLA","We are fighting for a country where people can have a better life!"],
-  ["ZAPATA","The land belongs to the people who work it!"],
-  ["PEASANT","We want land, justice and a better future for our families!"],
-  ["NARRATOR","The revolution grew stronger, AND Díaz faced increasing pressure."]
- ]
-},
-
-{
- title:"CHAPTER 4 · DÍAZ LEAVES POWER",
- people:["PORFIRIO DÍAZ","MADERO"],
- lines:[
-  ["NARRATOR","The revolutionary movement continued to grow. Díaz could no longer control the situation."],
-  ["NARRATOR","ON May 25, 1911, Porfirio Díaz resigned from the presidency."],
-  ["PORFIRIO DÍAZ","My time in power has come to an end."],
-  ["NARRATOR","A few days later, Díaz left Mexico and went into exile."],
-  ["NARRATOR","Madero became president ON November 6, 1911."],
-  ["NARRATOR","BUT many people still wanted important social changes."]
- ]
-},
-
-{
- title:"CHAPTER 5 · ZAPATA AND THE LAND",
- people:["ZAPATA","VILLA","PEASANT"],
- lines:[
-  ["NARRATOR","The revolutionaries did not all have the same goals. Madero wanted political democracy, BUT Zapata also wanted land reform."],
-  ["ZAPATA","Our communities need their land back. The peasants deserve justice!"],
-  ["NARRATOR","ON November 28, 1911, Zapata announced the Plan of Ayala."],
-  ["NARRATOR","It demanded the return of land to villages and communities."],
-  ["PEASANT","We need our land to grow food and support our families!"],
-  ["VILLA","The people have different needs, AND the struggle is far from over."]
- ]
-},
-
-{
- title:"CHAPTER 6 · THE TEN TRAGIC DAYS",
- people:["HUERTA","MADERO","PEASANT"],
- lines:[
-  ["NARRATOR","IN February 1913, a military coup began in Mexico City. This event became known as the Ten Tragic Days."],
-  ["NARRATOR","Madero was forced out of power. ON February 22, 1913, he and Vice President José María Pino Suárez were assassinated."],
-  ["NARRATOR","Victoriano Huerta took control of the government."],
-  ["HUERTA","I am now in control of the country!"],
-  ["NARRATOR","HOWEVER, many revolutionary leaders rejected his government."],
-  ["PEASANT","We still want justice and a better future!"],
-  ["NARRATOR","The fighting continued, AND Huerta was defeated in 1914."]
- ]
-},
-
-{
- title:"CHAPTER 7 · A NEW CONSTITUTION",
- people:["CARRANZA","PEASANT","ZAPATA"],
- lines:[
-  ["NARRATOR","After Huerta left power, revolutionary groups continued fighting because they disagreed about the future of Mexico."],
-  ["NARRATOR","Venustiano Carranza became an important leader and supported the creation of a new Constitution."],
-  ["NARRATOR","ON February 5, 1917, the Constitution of 1917 was proclaimed."],
-  ["NARRATOR","It included important principles about education, land ownership and workers' rights."],
-  ["CARRANZA","A new Constitution can help establish important rights for the country."],
-  ["PEASANT","We hope these changes will help future generations!"],
-  ["NARRATOR","The Revolution did not end every conflict immediately. HOWEVER, the Constitution became one of its most important results."],
-  ["NARRATOR","The Mexican Revolution changed the history of Mexico. It was a struggle for democracy, land, justice and a better future."]
- ]
-}
-
+const story = [
+    {
+        speaker: "NARRATOR",
+        text: "At the beginning of the twentieth century, Mexico was a country full of contrasts. For many years, Porfirio Díaz had ruled the nation. This period was known as the Porfiriato."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "During his government, railways, industries, and cities grew. HOWEVER, not everyone benefited. Many peasants lost their land, workers had difficult conditions, and wealth was concentrated in the hands of a few people."
+    },
+    {
+        speaker: "PEASANT",
+        text: "We work hard every day, BUT we do not have enough land or fair opportunities. We want justice!"
+    },
+    {
+        speaker: "PORFIRIO DÍAZ",
+        text: "Mexico needs order and progress. I believe my government has brought stability to the country."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "As the years passed, more people began to demand political change. One of them was Francisco I. Madero, who wanted democracy and free elections."
+    },
+    {
+        speaker: "MADERO",
+        text: "The people deserve the right to choose their leaders. Mexico needs democracy, not a government that stays in power forever!"
+    },
+    {
+        speaker: "NARRATOR",
+        text: "In 1910, Madero published the Plan of San Luis. He called on the Mexican people to rise up against Díaz on November 20, 1910."
+    },
+    {
+        speaker: "MADERO",
+        text: "I invite the Mexican people to fight for democracy and a better future. Our country needs change!"
+    },
+    {
+        speaker: "NARRATOR",
+        text: "The Mexican Revolution began. Different groups joined the movement, including peasants, workers, and revolutionary leaders."
+    },
+    {
+        speaker: "VILLA",
+        text: "We will fight for a country where people have more opportunities. The people must be heard!"
+    },
+    {
+        speaker: "ZAPATA",
+        text: "Land and freedom are essential. The peasants deserve the land they work!"
+    },
+    {
+        speaker: "NARRATOR",
+        text: "The movement grew stronger. THEREFORE, Porfirio Díaz resigned on May 25, 1911, and left Mexico. Later, Francisco I. Madero became president on November 6, 1911."
+    },
+    {
+        speaker: "MADERO",
+        text: "This is a new opportunity for Mexico. We must build a government that respects the people."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "HOWEVER, not everyone agreed with Madero's government. Emiliano Zapata believed that the promises about land reform were not being fulfilled."
+    },
+    {
+        speaker: "ZAPATA",
+        text: "We need real changes. The peasants cannot continue waiting for the land they deserve!"
+    },
+    {
+        speaker: "NARRATOR",
+        text: "On November 28, 1911, Zapata presented the Plan of Ayala. It demanded land reform and defended the rights of peasants."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "In February 1913, another conflict began in Mexico City. It became known as the Ten Tragic Days. General Victoriano Huerta participated in the coup against Madero."
+    },
+    {
+        speaker: "HUERTA",
+        text: "I will take control of the government. The political situation is changing."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "Madero and Vice President José María Pino Suárez were assassinated on February 22, 1913. Their deaths caused even more conflict."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "Venustiano Carranza opposed Huerta and organized a movement to restore constitutional order."
+    },
+    {
+        speaker: "CARRANZA",
+        text: "We must defend the Constitution and establish a legitimate government. Mexico needs laws that protect its people."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "During 1914, Huerta's government was defeated. Nevertheless, different revolutionary groups continued to disagree about the future of Mexico."
+    },
+    {
+        speaker: "VILLA",
+        text: "We have fought for change. Now we must decide what kind of country we want to build."
+    },
+    {
+        speaker: "ZAPATA",
+        text: "A better Mexico must include justice and land for the peasants."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "Finally, on February 5, 1917, a new Constitution was promulgated. It included important rights related to education, land, and workers."
+    },
+    {
+        speaker: "CARRANZA",
+        text: "This Constitution is an important step toward a new Mexico. The country needs laws that recognize social rights."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "The Mexican Revolution transformed the country's political and social life. Although conflicts did not end immediately in 1917, the Revolution changed the future of Mexico."
+    },
+    {
+        speaker: "NARRATOR",
+        text: "And that is how the Mexican Revolution became one of the most important events in Mexican history."
+    }
 ];
 
-// FLATTEN THE STORY
+const roles = [
+    "NARRATOR",
+    "MADERO",
+    "PORFIRIO DÍAZ",
+    "ZAPATA",
+    "VILLA",
+    "HUERTA",
+    "CARRANZA",
+    "PEASANT"
+];
 
-const story=[];
+const femaleNames = [
+    "samantha", "victoria", "zira", "jenny", "aria",
+    "sara", "hazel", "libby", "susan", "karen",
+    "eva", "female", "woman", "ava", "natasha"
+];
 
-scenes.forEach((scene,sceneIndex)=>{
- scene.lines.forEach(line=>{
-  story.push({
-   chapter:scene.title,
-   people:scene.people,
-   speaker:line[0],
-   text:line[1],
-   sceneIndex
-  });
- });
-});
+const maleNames = [
+    "david", "mark", "guy", "james", "ryan",
+    "christopher", "eric", "george", "male",
+    "man", "daniel", "alex", "thomas", "fred",
+    "aaron", "brian"
+];
 
-let current=0;
-let playing=false;
-let availableVoices=[];
-let selectedVoices={};
-let playbackToken=0;
+let availableVoices = [];
+let voiceAssignments = {};
+let currentIndex = 0;
+let playbackToken = 0;
+let isPlaying = false;
 
-const $=id=>document.getElementById(id);
+const normalRate = 1.0;
 
-// CHARACTER DRAWING
+function voiceGenderScore(voice, gender) {
+    const name = (voice.name + " " + voice.voiceURI).toLowerCase();
+    const terms = gender === "female" ? femaleNames : maleNames;
 
-function drawCharacter(name){
- const p=characters[name];
+    let score = 0;
 
- return `
- <div class="character" data-name="${name}">
-  ${p.hat?'<div class="hat"></div>':''}
-  <div class="hair"></div>
-  <div class="head">
-   <div class="eye"></div>
-   ${p.mustache?'<div class="mustache"></div>':''}
-  </div>
-  <div class="arm"></div>
-  <div class="arm right"></div>
-  <div class="body" style="--shirt:${p.color}"></div>
-  <div class="legs"></div>
-  <div class="person-name">${name}</div>
- </div>`;
+    terms.forEach(term => {
+        if (name.includes(term)) score += 3;
+    });
+
+    return score;
 }
 
-// TEXT FORMATTING
-// The audio reads the original text.
-// HTML formatting is only used for the written version.
-
-function formatText(text){
-
- let safe=text
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;");
-
- // CONNECTORS: BOLD AND UPPERCASE
-
- const connectors=[
-  "HOWEVER",
-  "THEREFORE",
-  "BECAUSE",
-  "ALTHOUGH",
-  "WHILE",
-  "AND",
-  "BUT",
-  "SO"
- ];
-
- connectors.forEach(word=>{
-  const regex=new RegExp("\\b"+word+"\\b","gi");
-
-  safe=safe.replace(regex,match=>
-   "<strong>"+match.toUpperCase()+"</strong>"
-  );
- });
-
- // TIME PREPOSITIONS
-
- const timeWords=[
-  "ON","IN","AT","DURING","AFTER","BEFORE"
- ];
-
- timeWords.forEach(word=>{
-  const regex=new RegExp(
-   "\\b"+word+"\\b(?=\\s+(?:January|February|March|April|May|June|July|August|September|October|November|December|1910|1911|1913|1914|1917|the twentieth century|the beginning))",
-   "gi"
-  );
-
-  safe=safe.replace(regex,match=>"<u>"+match+"</u>");
- });
-
- return safe;
+function getEnglishVoices() {
+    return availableVoices.filter(voice =>
+        voice.lang && voice.lang.toLowerCase().startsWith("en")
+    );
 }
 
-// RENDER SCENE
+function chooseVoice(gender, usedVoices) {
+    const englishVoices = getEnglishVoices();
 
-function render(){
+    if (!englishVoices.length) return null;
 
- const item=story[current];
+    const candidates = englishVoices
+        .map(voice => ({
+            voice,
+            score: voiceGenderScore(voice, gender)
+        }))
+        .sort((a, b) => b.score - a.score);
 
- $("sceneTitle").textContent=item.chapter;
- $("speaker").textContent=item.speaker;
+    const unused = candidates.find(item =>
+        !usedVoices.has(item.voice.name)
+    );
 
- // FORMATTED WRITTEN TEXT
- $("dialogue").innerHTML=formatText(item.text);
+    if (unused) {
+        usedVoices.add(unused.voice.name);
+        return unused.voice;
+    }
 
- $("cast").innerHTML=item.people
-  .map(drawCharacter)
-  .join("");
-
- document.querySelectorAll(".character").forEach(el=>{
-  if(el.dataset.name===item.speaker){
-   el.classList.add("talking");
-  }
- });
-
- $("progressBar").style.width=
-  ((current+1)/story.length*100)+"%";
-
- $("previous").disabled=current===0;
- $("next").disabled=current===story.length-1;
+    return candidates[0].voice;
 }
 
-// VOICE ASSIGNMENT
+function loadVoices() {
+    availableVoices = speechSynthesis.getVoices();
 
-function loadVoices(){
+    const englishVoices = getEnglishVoices();
 
- if(!("speechSynthesis" in window))return;
+    const status = document.getElementById("voiceStatus");
 
- availableVoices=speechSynthesis.getVoices()
-  .filter(v=>v.lang.toLowerCase().startsWith("en"));
+    if (!englishVoices.length) {
+        status.textContent =
+            "No English voices were found. Your browser may need English voices installed.";
+        return;
+    }
 
- const roles=[
-  "NARRATOR",
-  "MADERO",
-  "PORFIRIO DÍAZ",
-  "ZAPATA",
-  "VILLA",
-  "HUERTA",
-  "CARRANZA",
-  "PEASANT"
- ];
+    const previousAssignments = { ...voiceAssignments };
+    const usedVoices = new Set();
 
- if(availableVoices.length===0){
-  $("voiceStatus").textContent=
-   "English voices are not available yet. Please wait or check your browser settings.";
-  return;
- }
+    roles.forEach(role => {
+        const gender = role === "NARRATOR" ? "female" : "male";
+        const previousName = previousAssignments[role];
 
- // Assign a voice to EVERY character.
- // If the device has fewer voices than characters,
- // some characters will share a voice.
+        let selected = englishVoices.find(voice =>
+            voice.name === previousName
+        );
 
- const voicePreferences={
-  "NARRATOR":0,
-  "MADERO":1,
-  "PORFIRIO DÍAZ":2,
-  "ZAPATA":3,
-  "VILLA":4,
-  "HUERTA":5,
-  "CARRANZA":6,
-  "PEASANT":7
- };
+        if (!selected) {
+            selected = chooseVoice(gender, usedVoices);
+        }
 
- roles.forEach(role=>{
-  const preferred=voicePreferences[role];
-  const voiceIndex=preferred%availableVoices.length;
-  selectedVoices[role]=String(voiceIndex);
- });
+        if (!selected) selected = englishVoices[0];
 
- $("voiceSettings").innerHTML=roles.map(role=>{
+        voiceAssignments[role] = selected.name;
+        usedVoices.add(selected.name);
+    });
 
-  const selected=selectedVoices[role];
+    status.textContent =
+        "English voices loaded. Female narrator and male character voices selected when available.";
 
-  return `
-   <label>
-    ${role}
-    <select data-role="${role}">
-     ${availableVoices.map((voice,index)=>`
-      <option value="${index}" ${String(index)===selected?"selected":""}>
-       ${voice.name} (${voice.lang})
-      </option>
-     `).join("")}
-    </select>
-   </label>
-  `;
- }).join("");
-
- document.querySelectorAll("[data-role]").forEach(select=>{
-  select.addEventListener("change",()=>{
-   selectedVoices[select.dataset.role]=select.value;
-  });
- });
-
- $("voiceStatus").textContent=
-  availableVoices.length+" English voices detected. Voices have been assigned to all characters.";
+    renderVoiceSettings();
 }
 
-// SPEAK ONE LINE
+function renderVoiceSettings() {
+    const settings = document.getElementById("voiceSettings");
+    const englishVoices = getEnglishVoices();
 
-function speakLine(item,onEnd,token){
+    settings.innerHTML = "";
 
- if(!("speechSynthesis" in window))return;
+    roles.forEach(role => {
+        const label = document.createElement("label");
+        const gender = role === "NARRATOR" ? "Female voice" : "Male voice";
 
- const utterance=new SpeechSynthesisUtterance(item.text);
+        label.textContent = role + " — " + gender;
 
- utterance.lang="en-US";
+        const select = document.createElement("select");
 
- const voiceIndex=Number(selectedVoices[item.speaker]);
- const chosenVoice=availableVoices[voiceIndex];
+        englishVoices.forEach(voice => {
+            const option = document.createElement("option");
+            option.value = voice.name;
+            option.textContent = voice.name + " (" + voice.lang + ")";
+            select.appendChild(option);
+        });
 
- if(chosenVoice){
-  utterance.voice=chosenVoice;
- }
+        select.value = voiceAssignments[role];
 
- const pitch={
-  "NARRATOR":1,
-  "MADERO":1.08,
-  "PORFIRIO DÍAZ":0.85,
-  "ZAPATA":0.9,
-  "VILLA":1.15,
-  "HUERTA":0.82,
-  "CARRANZA":0.95,
-  "PEASANT":1.2
- };
+        select.addEventListener("change", () => {
+            voiceAssignments[role] = select.value;
+        });
 
- utterance.pitch=pitch[item.speaker]||1;
- utterance.rate=item.speaker==="NARRATOR"?.88:.95;
-
- utterance.onend=()=>{
-  if(token!==playbackToken)return;
-  if(onEnd)onEnd();
- };
-
- utterance.onerror=(event)=>{
-  if(token!==playbackToken)return;
-
-  console.error("Speech error:",event.error);
-
-  if(onEnd)onEnd();
- };
-
- speechSynthesis.speak(utterance);
+        label.appendChild(select);
+        settings.appendChild(label);
+    });
 }
 
-// PLAY THE COMPLETE STORY
+function formatText(text) {
+    const connectors = [
+        "HOWEVER", "THEREFORE", "BECAUSE",
+        "ALTHOUGH", "WHILE", "AND", "BUT", "SO"
+    ];
 
-function playStory(){
+    let formatted = text;
 
- if(playing){
-  playing=false;
-  playbackToken++;
-  speechSynthesis.cancel();
-  $("play").textContent="▶ Play story";
-  return;
- }
+    connectors.forEach(word => {
+        const regex = new RegExp("\\b" + word + "\\b", "gi");
+        formatted = formatted.replace(regex, match =>
+            "<strong>" + match.toUpperCase() + "</strong>"
+        );
+    });
 
- playing=true;
- playbackToken++;
+    const timeWords = [
+        "ON", "IN", "AT", "DURING", "AFTER", "BEFORE"
+    ];
 
- const token=playbackToken;
+    timeWords.forEach(word => {
+        const regex = new RegExp(
+            "\\b(" + word + ")\\b(?=\\s+(?:the\\s+)?(?:[A-Z][a-z]+|\\d{1,2}|the beginning))",
+            "gi"
+        );
 
- $("play").textContent="Ⅱ Pause story";
+        formatted = formatted.replace(regex, "<u>$1</u>");
+    });
 
- function playNext(){
-
-  if(!playing||token!==playbackToken)return;
-
-  render();
-
-  const item=story[current];
-
-  speakLine(item,()=>{
-
-   if(!playing||token!==playbackToken)return;
-
-   if(current<story.length-1){
-    current++;
-    playNext();
-   }else{
-    playing=false;
-    $("play").textContent="▶ Play story";
-   }
-
-  },token);
- }
-
- playNext();
+    return formatted;
 }
 
-// STOP PLAYBACK
+function renderLine() {
+    const item = story[currentIndex];
 
-function stopPlayback(){
+    document.getElementById("speaker").textContent = item.speaker;
+    document.getElementById("dialogueText").innerHTML =
+        formatText(item.text);
 
- playing=false;
- playbackToken++;
+    const character = document.getElementById("character");
+    const hat = document.getElementById("hat");
 
- speechSynthesis.cancel();
+    const positions = {
+        "NARRATOR": "50%",
+        "MADERO": "42%",
+        "PORFIRIO DÍAZ": "60%",
+        "ZAPATA": "43%",
+        "VILLA": "58%",
+        "HUERTA": "45%",
+        "CARRANZA": "58%",
+        "PEASANT": "38%"
+    };
 
- $("play").textContent="▶ Play story";
+    character.style.left = positions[item.speaker] || "50%";
+    hat.style.display = item.speaker === "NARRATOR" ? "none" : "block";
+
+    document.getElementById("previousButton").disabled =
+        currentIndex === 0;
+
+    document.getElementById("nextButton").disabled =
+        currentIndex === story.length - 1;
 }
 
-// BUTTONS
+function createUtterance(item) {
+    const utterance = new SpeechSynthesisUtterance(item.text);
 
-$("play").onclick=playStory;
+    const voiceName = voiceAssignments[item.speaker];
+    const voice = availableVoices.find(v => v.name === voiceName);
 
-$("stop").onclick=stopPlayback;
+    if (voice) {
+        utterance.voice = voice;
+        utterance.lang = voice.lang;
+    } else {
+        utterance.lang = "en-US";
+    }
 
-$("next").onclick=()=>{
- stopPlayback();
+    // Normal speaking speed: no acceleration.
+    utterance.rate = normalRate;
+    utterance.pitch = item.speaker === "NARRATOR" ? 1.08 : 0.95;
 
- if(current<story.length-1){
-  current++;
- }
-
- render();
-};
-
-$("previous").onclick=()=>{
- stopPlayback();
-
- if(current>0){
-  current--;
- }
-
- render();
-};
-
-// SPEAK THE CURRENT LINE
-
-$("speak").onclick=()=>{
- stopPlayback();
-
- const token=playbackToken;
- const item=story[current];
-
- speakLine(item,null,token);
-};
-
-// COMPLETE TRANSCRIPT
-
-$("transcript").innerHTML=story.map(item=>`
- <p>
-  <b>${item.speaker}:</b>
-  ${formatText(item.text)}
- </p>
-`).join("");
-
-// INITIALIZE VOICES
-
-function initialize(){
-
- render();
-
- if(!("speechSynthesis" in window)){
-  $("voiceStatus").textContent=
-   "This browser does not support speech synthesis.";
-  return;
- }
-
- loadVoices();
-
- speechSynthesis.onvoiceschanged=loadVoices;
-
- // Try again because some browsers load voices asynchronously.
- setTimeout(()=>{
-  if(availableVoices.length===0){
-   loadVoices();
-  }
- },1000);
+    return utterance;
 }
 
-initialize();
+function speakCurrentLine() {
+    stopStory();
 
+    const item = story[currentIndex];
+    const utterance = createUtterance(item);
+    const character = document.getElementById("character");
+
+    utterance.onstart = () => character.classList.add("speaking");
+    utterance.onend = () => character.classList.remove("speaking");
+    utterance.onerror = () => character.classList.remove("speaking");
+
+    speechSynthesis.speak(utterance);
+}
+
+function nextLine() {
+    stopStory();
+
+    if (currentIndex < story.length - 1) {
+        currentIndex++;
+        renderLine();
+    }
+}
+
+function previousLine() {
+    stopStory();
+
+    if (currentIndex > 0) {
+        currentIndex--;
+        renderLine();
+    }
+}
+
+function stopStory() {
+    playbackToken++;
+    isPlaying = false;
+    speechSynthesis.cancel();
+    document.getElementById("character").classList.remove("speaking");
+}
+
+function playStory() {
+    stopStory();
+
+    isPlaying = true;
+    const token = playbackToken;
+
+    playFromCurrent(token);
+}
+
+function playFromCurrent(token) {
+    if (token !== playbackToken || !isPlaying) return;
+
+    if (currentIndex >= story.length) {
+        isPlaying = false;
+        currentIndex = story.length - 1;
+        renderLine();
+        return;
+    }
+
+    renderLine();
+
+    const item = story[currentIndex];
+    const utterance = createUtterance(item);
+    const character = document.getElementById("character");
+
+    utterance.onstart = () => {
+        if (token === playbackToken) {
+            character.classList.add("speaking");
+        }
+    };
+
+    utterance.onend = () => {
+        if (token !== playbackToken || !isPlaying) return;
+
+        character.classList.remove("speaking");
+
+        currentIndex++;
+
+        // Start the next speaker immediately after the previous line ends.
+        playFromCurrent(token);
+    };
+
+    utterance.onerror = () => {
+        if (token === playbackToken) {
+            character.classList.remove("speaking");
+            isPlaying = false;
+        }
+    };
+
+    speechSynthesis.speak(utterance);
+}
+
+function renderTranscript() {
+    const transcript = document.getElementById("fullTranscript");
+
+    transcript.innerHTML = story.map(item =>
+        "<p><strong>" + item.speaker + ":</strong> " +
+        formatText(item.text) + "</p>"
+    ).join("");
+}
+
+speechSynthesis.onvoiceschanged = loadVoices;
+
+loadVoices();
+renderLine();
+renderTranscript();
 </script>
+
 </body>
 </html>
