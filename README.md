@@ -1,5 +1,6 @@
-
-<!DOCTYPE html>
+<Escuela Normal Superior Prof. José Medrano>
+<Teacher Vanessa Pando>
+<Alumna: Tania Jocelin Ontiveros Quintana>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
