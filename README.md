@@ -1,10 +1,7 @@
-<Escuela Normal Superior Prof. José E. Medrano R.>
+Escuela Normal Superior Prof. José E. Medrano R.
 
 Teacher: PANDURO MIJAREZ TALINA
 VANESSA
-
-
-
 
 Alumna: Ontiveros Quintana Tania Jocelin
 
