@@ -3,404 +3,442 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Mexican Revolution - Animated Cartoon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mexican Revolution | An Animated Story</title>
 <style>
+:root{--ink:#24232a;--cream:#fff6e8;--red:#c94c43;--green:#39765b;--gold:#e8b84f;--sky:#9bd0d6}
 *{box-sizing:border-box}
-body{margin:0;background:#f4e5c9;color:#39291f;font-family:Arial,sans-serif}
-header{background:#873329;color:white;text-align:center;padding:20px}
-header h1{font-family:Georgia;font-size:30px}
-main{max-width:900px;margin:auto;padding:15px}
-.stage{background:#fff;border:5px solid #493326;border-radius:16px;overflow:hidden}
-.top{text-align:center;background:#493326;color:white;padding:10px}
-svg{display:block;width:100%;height:auto;background:#a9dcec}
-.character{transform-box:fill-box;transform-origin:center bottom}
-.walk{animation:walk 3s ease-in-out infinite}
-.walk2{animation:walk2 3.5s ease-in-out infinite}
-.horse{animation:horse 1s ease-in-out infinite}
-.talk{animation:talk .25s infinite alternate}
-.wave{animation:wave .6s infinite alternate;transform-box:fill-box;transform-origin:bottom}
-.sun{animation:sun 5s infinite alternate;transform-box:fill-box;transform-origin:center}
-.cloud{animation:cloud 18s linear infinite}
-@keyframes walk{0%,100%{transform:translateX(0)}50%{transform:translateX(65px)}}
-@keyframes walk2{0%,100%{transform:translateX(0)}50%{transform:translateX(-65px)}}
-@keyframes horse{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-@keyframes talk{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
-@keyframes wave{from{transform:rotate(-15deg)}to{transform:rotate(30deg)}}
-@keyframes sun{to{transform:rotate(25deg)}}
-@keyframes cloud{from{transform:translateX(-40px)}to{transform:translateX(100px)}}
-.dialogue{padding:17px;min-height:145px;background:#fffaf0;line-height:1.7}
-.dialogue p{margin:0}
-.speaker{font-weight:bold;color:#a33d2d;margin-bottom:8px}
-strong{color:#b32d22}
-u{text-decoration-color:#2584a3;text-decoration-thickness:2px}
-.controls{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin:18px 0}
-button{background:#963b2d;color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:bold;cursor:pointer}
-button:hover{background:#60251e}
-.section{background:white;border-radius:14px;padding:20px;margin:25px 0;line-height:1.7}
-.section h2{color:#963b2d;text-align:center}
-.card{border:2px solid #ead9c0;border-radius:12px;padding:13px;margin:12px 0}
-.card h3{color:#963b2d}
-#highlights,#transcript{display:none}
-#status{text-align:center;color:#765c49;padding:8px}
+body{margin:0;background:#f1e8d9;color:var(--ink);font-family:Georgia,serif}
+button{font:700 1rem Arial;cursor:pointer;border:0;border-radius:999px;padding:12px 20px;background:var(--red);color:white;box-shadow:0 4px 0 #87352f}
+button:active{transform:translateY(3px);box-shadow:0 1px 0 #87352f}
+.wrap{max-width:1100px;margin:auto;padding:20px}
+.top{text-align:center;padding:25px 10px}
+.eyebrow{font:700 .78rem Arial;letter-spacing:3px;color:var(--green)}
+h1{font-size:clamp(2rem,5vw,4rem);margin:8px 0;color:#293b32}
+.top p{font:1.05rem Arial;max-width:680px;margin:0 auto;color:#5d5b54}
+.stage{position:relative;overflow:hidden;border:8px solid #fff;border-radius:22px;background:#a9d9df;box-shadow:0 12px 35px #55442b30;min-height:390px}
+.sky{position:absolute;inset:0;background:linear-gradient(#8ecbd4 0 62%,#e7c77d 62%)}
+.sun{position:absolute;right:9%;top:9%;width:70px;height:70px;background:#ffd56d;border-radius:50%;box-shadow:0 0 0 15px #ffd56d35}
+.cloud{position:absolute;top:17%;left:12%;width:115px;height:30px;background:#fff9;border-radius:40px}
+.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud:before{width:45px;height:45px;left:20px;top:-20px}
+.cloud:after{width:55px;height:50px;right:15px;top:-25px}
+.hills{position:absolute;bottom:21%;left:-5%;width:110%;height:100px;background:#73966a;border-radius:50% 50% 0 0}
+.ground{position:absolute;bottom:0;height:24%;width:100%;background:#c9a36a}
+.town{position:absolute;bottom:22%;left:5%;display:flex;gap:14px;align-items:end}
+.house{width:90px;height:75px;background:#f1d8a8;border:4px solid #8d5944;position:relative}
+.house:before{content:"";position:absolute;left:-9px;top:-27px;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:30px solid #9c4b3e}
+.house:after{content:"";position:absolute;bottom:0;left:32px;width:20px;height:37px;background:#8a5b43}
+.cactus{position:absolute;bottom:22%;right:10%;width:18px;height:75px;background:#39765b;border-radius:10px}
+.cactus:before,.cactus:after{content:"";position:absolute;width:28px;height:12px;border:10px solid #39765b;border-bottom:0;border-radius:20px 20px 0 0}
+.cactus:before{top:25px;left:-23px;transform:rotate(-90deg)}
+.cactus:after{top:42px;right:-23px;transform:rotate(90deg)}
+.banner{position:absolute;top:12px;left:15px;padding:8px 13px;background:#fff2dfdd;border-radius:8px;font:700 .78rem Arial;letter-spacing:1px;color:#654637}
+.characters{position:absolute;bottom:17%;left:0;right:0;display:flex;justify-content:center;align-items:end;gap:clamp(5px,5vw,55px);height:220px}
+.person{position:relative;width:105px;height:205px;animation:bob 2s ease-in-out infinite}
+.person:nth-child(2){animation-delay:.3s}
+.person:nth-child(3){animation-delay:.6s}
+.head{position:absolute;top:8px;left:28px;width:52px;height:58px;background:#bd8058;border:3px solid #633f31;border-radius:45% 45% 48% 48%;z-index:3}
+.hair{position:absolute;top:0;left:25px;width:58px;height:23px;background:#30251f;border-radius:50% 50% 15% 15%;z-index:4}
+.hat{position:absolute;top:-9px;left:13px;width:82px;height:18px;background:#e7d2a2;border:3px solid #694b36;border-radius:50%;z-index:5}
+.hat:after{content:"";position:absolute;left:25px;top:-19px;width:28px;height:22px;background:#e7d2a2;border:3px solid #694b36;border-radius:8px 8px 2px 2px}
+.eye{position:absolute;top:28px;left:12px;width:5px;height:5px;background:#28201c;border-radius:50%;box-shadow:18px 0 #28201c}
+.moustache{position:absolute;top:39px;left:11px;width:29px;height:8px;border-bottom:5px solid #33231d;border-radius:50%}
+.body{position:absolute;top:62px;left:20px;width:70px;height:88px;background:var(--shirt,#426c55);border:3px solid #573c2d;border-radius:18px 18px 8px 8px;z-index:2}
+.belt{position:absolute;top:118px;left:20px;width:70px;height:9px;background:#4a3325;z-index:3}
+.arm{position:absolute;top:72px;left:8px;width:19px;height:75px;background:#bd8058;border:3px solid #633f31;border-radius:15px;transform:rotate(18deg);transform-origin:top;z-index:1}
+.arm.right{left:79px;transform:rotate(-20deg)}
+.legs{position:absolute;top:145px;left:30px;width:20px;height:53px;background:#594535;border:3px solid #382c25;border-radius:8px}
+.legs:after{content:"";position:absolute;left:24px;top:0;width:20px;height:53px;background:inherit;border:inherit;border-radius:8px}
+.label{position:absolute;bottom:-17px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#fff1d7;padding:4px 8px;border-radius:6px;font:700 .72rem Arial}
+.speech{position:relative;background:var(--cream);border-radius:18px;padding:20px 24px;margin:-4px auto 0;max-width:900px;box-shadow:0 8px 22px #594b3520}
+.speaker{font:700 .78rem Arial;letter-spacing:2px;color:var(--red);margin-bottom:7px}
+.line{font-size:clamp(1.05rem,2.2vw,1.35rem);line-height:1.55;min-height:55px}
+.controls{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:18px 0}
+.controls .secondary{background:var(--green);box-shadow:0 4px 0 #24513d}
+.controls .light{background:#e5bd65;color:#302719;box-shadow:0 4px 0 #a47d34}
+.progress{height:8px;background:#d7cbb9;border-radius:20px;overflow:hidden;margin:15px 0}
+.progress>div{height:100%;width:0;background:var(--red);transition:width .3s}
+.section{background:#fffaf1;border-radius:20px;padding:25px;margin:28px 0;box-shadow:0 5px 20px #594b3512}
+.section h2{margin-top:0;color:#315e49;font-size:1.8rem}
+.moments{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.moment{background:#f4ead8;border-left:5px solid var(--red);padding:15px;border-radius:10px}
+.moment b{font:700 .82rem Arial;color:#a13f37;letter-spacing:1px}
+.moment h3{margin:8px 0}
+.moment p{font:.98rem/1.5 Arial;margin:0}
+.transcript p{font:1rem/1.7 Arial;border-bottom:1px solid #e7ddce;padding:8px 0;margin:0}
+.transcript strong{color:#a13f37}
+.transcript u{text-decoration-thickness:2px;text-decoration-color:#39765b;text-underline-offset:3px}
+.note{font:.85rem/1.5 Arial;color:#71695d;text-align:center;margin:20px}
+.hide{display:none!important}
+.person.talk .arm.right{animation:talk .35s ease-in-out infinite alternate}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes talk{from{transform:rotate(-20deg)}to{transform:rotate(-65deg)}}
+@media(max-width:600px){
+.stage{min-height:330px}
+.characters{height:180px;bottom:18%;gap:0}
+.person{transform:scale(.8);transform-origin:bottom center;margin:0 -8px}
+.town{transform:scale(.75);transform-origin:bottom left}
+.speech{padding:17px}
+.section{padding:18px}
+}
 </style>
 </head>
 <body>
+<main class="wrap">
 
-<header>
-<h1>THE MEXICAN REVOLUTION</h1>
-<p>An Animated Historical Story</p>
-<p>November 20th, 1910</p>
+<header class="top">
+<div class="eyebrow">A HISTORY STORY IN ENGLISH</div>
+<h1>The Mexican Revolution</h1>
+<p>A story about power, courage, inequality and the fight for a new Mexico.</p>
 </header>
 
-<main>
-<div class="stage">
-<div class="top">
-<h2 id="title">Mexico Before the Revolution</h2>
-<p id="chapter">Chapter 1</p>
-</div>
+<section class="stage" aria-label="Animated story scene">
+<div class="sky"></div>
+<div class="sun"></div>
+<div class="cloud"></div>
+<div class="hills"></div>
+<div class="ground"></div>
+<div class="town"><div class="house"></div><div class="house" style="transform:scale(.7)"></div></div>
+<div class="cactus"></div>
+<div class="banner" id="sceneTitle">CHAPTER 1 · A COUNTRY OF CONTRASTS</div>
+<div class="characters" id="characters"></div>
+</section>
 
-<!-- ANIMATED CARTOON STAGE -->
-<svg viewBox="0 0 800 390" role="img" aria-label="Animated Mexican village and historical characters">
-<defs>
-<g id="farmer">
-<!-- body -->
-<path d="M-24 160 L-30 240 L-45 310 L-12 310 L0 245 L15 310 L48 310 L28 230 L25 160Z" fill="#a94d2c" stroke="#442b20" stroke-width="4"/>
-<path d="M-23 170 L-45 215 L-63 238 L-50 250 L-20 225 L0 195 L22 225 L50 250 L64 238 L42 205 L25 165Z" fill="#d59a54" stroke="#442b20" stroke-width="4"/>
-<!-- face -->
-<circle cx="0" cy="120" r="42" fill="#bd805b" stroke="#442b20" stroke-width="4"/>
-<path d="M-48 112 Q0 65 48 112 L35 119 L-35 119Z" fill="#7d4329" stroke="#442b20" stroke-width="4"/>
-<ellipse cx="0" cy="105" rx="75" ry="13" fill="#d3a45b" stroke="#442b20" stroke-width="5"/>
-<path d="M-18 135 Q0 155 18 135" fill="none" stroke="#542e24" stroke-width="4"/>
-<circle cx="-14" cy="119" r="4" fill="#241b16"/>
-<circle cx="14" cy="119" r="4" fill="#241b16"/>
-<path d="M-10 150 Q0 160 10 150" fill="none" stroke="#542e24" stroke-width="3"/>
-</g>
-
-<g id="madero">
-<path d="M-25 165 L-30 240 L-45 310 L-10 310 L0 245 L15 310 L48 310 L27 230 L25 165Z" fill="#263f61" stroke="#29221d" stroke-width="4"/>
-<path d="M-25 170 L-48 220 L-62 240 L-49 251 L-15 215 L0 195 L20 220 L48 250 L62 240 L40 205 L25 165Z" fill="#e0d1b2" stroke="#29221d" stroke-width="4"/>
-<circle cx="0" cy="120" r="42" fill="#bd805b" stroke="#442b20" stroke-width="4"/>
-<path d="M-43 103 Q0 65 43 103 L35 112 L-35 112Z" fill="#493020" stroke="#29221d" stroke-width="4"/>
-<path d="M-35 91 Q0 60 35 91 L24 84 L-24 84Z" fill="#d2a65b" stroke="#29221d" stroke-width="3"/>
-<ellipse cx="0" cy="91" rx="55" ry="9" fill="#493020" stroke="#29221d" stroke-width="3"/>
-<circle cx="-14" cy="119" r="4" fill="#241b16"/>
-<circle cx="14" cy="119" r="4" fill="#241b16"/>
-<path d="M-12 144 Q0 151 12 144" fill="none" stroke="#542e24" stroke-width="3"/>
-<path d="M-24 132 Q0 145 24 132" fill="none" stroke="#493020" stroke-width="5"/>
-</g>
-
-<g id="diaz">
-<path d="M-25 160 L-30 240 L-45 310 L-10 310 L0 245 L15 310 L48 310 L27 230 L25 160Z" fill="#30394b" stroke="#29221d" stroke-width="4"/>
-<path d="M-24 165 L-40 210 L-10 225 L0 185 L15 225 L43 210 L25 165Z" fill="#eee0c5" stroke="#29221d" stroke-width="3"/>
-<circle cx="0" cy="120" r="42" fill="#c28b69" stroke="#442b20" stroke-width="4"/>
-<path d="M-42 105 Q0 72 42 105 L35 114 L-35 114Z" fill="#77716c" stroke="#29221d" stroke-width="3"/>
-<circle cx="-14" cy="119" r="4" fill="#241b16"/>
-<circle cx="14" cy="119" r="4" fill="#241b16"/>
-<path d="M-18 140 Q0 151 18 140" fill="none" stroke="#77716c" stroke-width="7"/>
-<path d="M-16 128 L-4 132 M4 132 L16 128" stroke="#77716c" stroke-width="5"/>
-</g>
-
-<g id="horse">
-<ellipse cx="0" cy="205" rx="70" ry="38" fill="#8c4b2c" stroke="#3f291d" stroke-width="4"/>
-<path d="M35 190 Q45 115 78 120 L103 160 L75 184Z" fill="#8c4b2c" stroke="#3f291d" stroke-width="4"/>
-<path d="M82 127 Q115 100 126 130 L105 153 L78 151Z" fill="#8c4b2c" stroke="#3f291d" stroke-width="4"/>
-<path d="M-48 230 L-55 300 L-42 300 L-23 230 M20 230 L10 300 L25 300 L42 225" fill="#563322" stroke="#3f291d" stroke-width="6"/>
-<path d="M-60 180 Q-100 150 -85 130" fill="none" stroke="#3f291d" stroke-width="9"/>
-<circle cx="107" cy="135" r="4" fill="black"/>
-</g>
-
-<g id="house">
-<rect x="0" y="100" width="140" height="110" fill="#d9a66f" stroke="#77452b" stroke-width="5"/>
-<path d="M-15 105 L70 35 L155 105Z" fill="#9c4730" stroke="#77452b" stroke-width="5"/>
-<rect x="53" y="145" width="35" height="65" fill="#69402a"/>
-<rect x="12" y="125" width="30" height="30" fill="#a9dcec" stroke="#77452b" stroke-width="4"/>
-</g>
-</defs>
-
-<!-- SKY AND LAND -->
-<rect width="800" height="390" fill="#9cdaed"/>
-<circle class="sun" cx="700" cy="65" r="36" fill="#ffd66d"/>
-<g class="cloud" fill="white">
-<ellipse cx="180" cy="65" rx="65" ry="20"/>
-<circle cx="145" cy="57" r="23"/>
-<circle cx="185" cy="45" r="28"/>
-</g>
-<path d="M0 260 L130 155 L255 260 L410 145 L570 260 L690 160 L800 255 L800 390 L0 390Z" fill="#86a76b"/>
-<path d="M0 295 Q180 255 380 305 T800 285 L800 390 L0 390Z" fill="#789c4c"/>
-
-<!-- HOUSES -->
-<use href="#house" x="40" y="150"/>
-<use href="#house" x="600" y="155" transform="translate(600 155) scale(.8) translate(-600 -155)"/>
-
-<!-- DIALOGUE CHARACTERS -->
-<g id="characterA" class="character">
-<use href="#diaz" transform="translate(210 0)"/>
-</g>
-<g id="characterB" class="character">
-<use href="#farmer" transform="translate(450 0)"/>
-</g>
-<g id="characterC" class="character">
-<use href="#madero" transform="translate(660 0) scale(.8) translate(-660 0)"/>
-</g>
-<g id="horseGroup" class="character horse" style="display:none">
-<use href="#horse" transform="translate(120 0) scale(.8)"/>
-</g>
-</svg>
-
-<div class="dialogue" id="dialogue">
+<section class="speech">
 <div class="speaker" id="speaker">NARRATOR</div>
-<p id="text">Mexico, in 1910...</p>
-</div>
-</div>
+<div class="line" id="line">At the beginning of the twentieth century, Mexico was changing.</div>
+</section>
 
-<div id="status">Ready to begin!</div>
+<div class="progress"><div id="bar"></div></div>
 
 <div class="controls">
-<button onclick="play()">▶ Play</button>
-<button onclick="pause()">Ⅱ Pause</button>
-<button onclick="stop()">■ Stop</button>
-<button onclick="previous()">← Back</button>
-<button onclick="next()">Next →</button>
+<button class="secondary" id="prev">← Previous</button>
+<button id="play">▶ Play story</button>
+<button class="light" id="next">Next →</button>
+<button class="secondary" id="stop">■ Stop voice</button>
 </div>
 
 <section class="section">
-<h2>Historical Highlights</h2>
-<p>The six most important moments of the Mexican Revolution.</p>
-<div id="highlights"></div>
+<h2>Six key historical moments</h2>
+<div class="moments">
+
+<article class="moment">
+<b>01 · 1910</b>
+<h3>The call to revolt</h3>
+<p>Francisco I. Madero challenged Porfirio Díaz and called on Mexicans to rise up on November 20, 1910.</p>
+</article>
+
+<article class="moment">
+<b>02 · 1911</b>
+<h3>Díaz leaves power</h3>
+<p>After the uprising spread, Porfirio Díaz resigned in May 1911 and went into exile.</p>
+</article>
+
+<article class="moment">
+<b>03 · 1911</b>
+<h3>The Plan of Ayala</h3>
+<p>Emiliano Zapata demanded land reform because many peasants had lost their lands.</p>
+</article>
+
+<article class="moment">
+<b>04 · 1913</b>
+<h3>The Ten Tragic Days</h3>
+<p>A military coup in Mexico City ended with President Madero and Vice President Pino Suárez being assassinated.</p>
+</article>
+
+<article class="moment">
+<b>05 · 1914</b>
+<h3>Huerta is defeated</h3>
+<p>Revolutionary forces defeated Victoriano Huerta's government, but different revolutionary groups continued to disagree.</p>
+</article>
+
+<article class="moment">
+<b>06 · 1917</b>
+<h3>A new Constitution</h3>
+<p>The Constitution of 1917 included important principles about education, land and workers' rights.</p>
+</article>
+
+</div>
 </section>
 
-<section class="section">
-<h2>The Complete Story</h2>
-<p id="student"></p>
+<section class="section transcript">
+<h2>The complete story · English script</h2>
 <div id="transcript"></div>
 </section>
+
+<p class="note">The narration uses your browser's English text-to-speech voice. If the voice sounds different on another device, the written script remains the same.</p>
+
 </main>
 
 <script>
-const chapters=[
-{
-title:"Mexico Before the Revolution",
-action:"village",
-people:["Porfirio Díaz","Farmer","Worker"],
-lines:[
-["NARRATOR","Mexico, <u>in</u> 1910, was a country with great differences between rich and poor. Porfirio Díaz had governed Mexico for more than thirty years."],
-["FARMER","We work every day, <strong>but</strong> we do not own the land. Our families need help!"],
-["WORKER","Our working conditions are unfair, <strong>and</strong> we have very few rights."],
-["NARRATOR","<strong>However</strong>, the government focused on economic development while many people continued to suffer."],
-["FARMER","We want a better future for our children!"]
-]},
-{
-title:"Madero Arrives",
-action:"madero",
-people:["Francisco I. Madero","Farmer","Citizen"],
-lines:[
-["NARRATOR","A political leader named Francisco I. Madero began to challenge Díaz's government."],
-["MADERO","Mexico needs democracy! The people deserve free elections!"],
-["FARMER","Can you help us get our land back?"],
-["MADERO","I believe in a fair government. <strong>Therefore</strong>, we must work together."],
-["NARRATOR","<u>On</u> October 5th, 1910, Madero published the Plan of San Luis. He called for an uprising <u>on</u> November 20th."]
-]},
-{
-title:"The Revolution Begins",
-action:"revolution",
-people:["Revolutionary","Horse","Farmer"],
-lines:[
-["NARRATOR","<u>On</u> November 20th, 1910, the Mexican Revolution began. People rose up in different parts of the country."],
-["REVOLUTIONARY","It is time for change! We want freedom!"],
-["FARMER","<strong>And</strong> we want our land back!"],
-["NARRATOR","Leaders like Emiliano Zapata and Pancho Villa joined the struggle. <strong>Then</strong>, the movement became stronger."],
-["REVOLUTIONARY","Let's move forward!"]
-]},
-{
-title:"Díaz Leaves Mexico",
-action:"departure",
-people:["Porfirio Díaz","Citizen","Farmer"],
-lines:[
-["NARRATOR","After months of fighting, Díaz's government became weaker."],
-["DÍAZ","I am resigning from the presidency."],
-["NARRATOR","<u>On</u> May 25th, 1911, Porfirio Díaz resigned. <u>On</u> May 31st, he left Mexico for France."],
-["CITIZEN","A new chapter is beginning!"],
-["NARRATOR","<strong>Finally</strong>, the country had an opportunity for political change."]
-]},
-{
-title:"Madero and Zapata",
-action:"meeting",
-people:["Madero","Zapata","Farmer"],
-lines:[
-["NARRATOR","<u>On</u> November 6th, 1911, Francisco I. Madero became president."],
-["MADERO","I want a democratic country!"],
-["ZAPATA","We need land reform. Farmers cannot wait any longer!"],
-["NARRATOR","<u>On</u> November 28th, 1911, Zapata proclaimed the Plan of Ayala."],
-["ZAPATA","<strong>However</strong>, the struggle for land is not over!"]
-]},
-{
-title:"The Ten Tragic Days",
-action:"conflict",
-people:["Citizen","Madero","Huerta"],
-lines:[
-["NARRATOR","<u>During</u> February 1913, a coup took place in Mexico City. It became known as the Ten Tragic Days."],
-["CITIZEN","There is fighting in the capital! What will happen?"],
-["NARRATOR","General Victoriano Huerta took power. Madero was forced from office."],
-["NARRATOR","<u>On</u> February 22nd, 1913, Madero and Vice President Pino Suárez were assassinated."],
-["CITIZEN","Mexico is facing another difficult time."]
-]},
-{
-title:"The Constitution of 1917",
-action:"constitution",
-people:["Carranza","Citizen","Farmer"],
-lines:[
-["NARRATOR","After more fighting and political changes, a new Constitution was adopted <u>on</u> February 5th, 1917."],
-["CARRANZA","Mexico needs new laws and a stronger constitutional government!"],
-["NARRATOR","The Constitution included important rights related to education, land and workers."],
-["FARMER","Our demands for a better life must be heard!"],
-["NARRATOR","<strong>Finally</strong>, the Constitution of 1917 became one of the most important results of the Revolution."]
-]}
-];
+const story=[
 
-const highlights=[
-["The Porfiriato","Before 1910","Porfirio Díaz governed for more than thirty years. Inequality and limited political freedom caused growing discontent."],
-["The Plan of San Luis","October 5th, 1910","Madero called for an uprising against Díaz and demanded free elections."],
-["The Revolution Begins","November 20th, 1910","Armed uprisings began in different parts of Mexico."],
-["Díaz Resigns","May 25th, 1911","Porfirio Díaz resigned from the presidency and later left Mexico."],
-["The Ten Tragic Days","February 1913","A coup led to Huerta taking power. Madero and Pino Suárez were assassinated."],
-["The Constitution","February 5th, 1917","Mexico adopted a new Constitution with important social rights."]
-];
+{
+chapter:'CHAPTER 1 · A COUNTRY OF CONTRASTS',
+scene:'porfirio',
+parts:[
+['NARRATOR','At the beginning of the twentieth century, Mexico was ruled by Porfirio Díaz.'],
+['NARRATOR','He had been in power for many years. The country built railroads and factories.'],
+['NARRATOR','BUT wealth was not shared equally. Many farmers and workers lived in poverty, AND they had very few rights.'],
+['PEASANT','We work hard, BUT we do not own the land we cultivate.'],
+['NARRATOR','People wanted change.']
+]
+},
 
-let s=0,l=0,playing=false,timer=null;
-let englishVoices=[];
+{
+chapter:'CHAPTER 2 · THE CALL FOR CHANGE',
+scene:'madero',
+parts:[
+['NARRATOR','Francisco I. Madero believed that Mexico needed free elections.'],
+['MADERO','Mexico needs democracy! The people must choose their president.'],
+['NARRATOR','IN 1910, Madero published the Plan of San Luis. He called for an uprising ON November 20, 1910.'],
+['NARRATOR','AND the Mexican Revolution began.']
+]
+},
 
-function getVoices(){
- if(!("speechSynthesis" in window))return;
- englishVoices=speechSynthesis.getVoices().filter(v=>v.lang.startsWith("en"));
+{
+chapter:'CHAPTER 3 · THE REVOLUTION BEGINS',
+scene:'revolt',
+parts:[
+['NARRATOR','ON November 20, 1910, groups of people began to rise against Díaz.'],
+['NARRATOR','Farmers, workers and revolutionary leaders joined the struggle.'],
+['NARRATOR','In the north, leaders such as Pancho Villa became important. IN the south, Emiliano Zapata fought for land and justice.'],
+['ZAPATA','The land belongs to the people who work it!'],
+['VILLA','We are fighting for a country with a better future!']
+]
+},
+
+{
+chapter:'CHAPTER 4 · DÍAZ LEAVES POWER',
+scene:'exile',
+parts:[
+['NARRATOR','The movement grew stronger, AND Díaz could no longer remain in power.'],
+['NARRATOR','ON May 25, 1911, Porfirio Díaz resigned. A few days later, he left Mexico for exile.'],
+['DIAZ','My long government has come to an end.'],
+['NARRATOR','Madero became president IN November 1911. BUT the revolution was not over.']
+]
+},
+
+{
+chapter:'CHAPTER 5 · DIFFERENT IDEAS',
+scene:'zapata',
+parts:[
+['NARRATOR','Many revolutionaries wanted different things. Madero wanted political democracy, while Zapata demanded land for peasants.'],
+['ZAPATA','We need land reform. The promises must become real.'],
+['NARRATOR','ON November 28, 1911, Zapata announced the Plan of Ayala. It demanded the return of land to villages.'],
+['NARRATOR','Meanwhile, Pancho Villa and other leaders continued fighting in the north.']
+]
+},
+
+{
+chapter:'CHAPTER 6 · A NEW CRISIS',
+scene:'huerta',
+parts:[
+['NARRATOR','IN February 1913, a military coup began in Mexico City. It became known as the Ten Tragic Days.'],
+['NARRATOR','Madero was forced from power. He and Vice President José María Pino Suárez were assassinated ON February 22, 1913.'],
+['NARRATOR','Victoriano Huerta took control, BUT many revolutionaries refused to accept his government.'],
+['NARRATOR','The fight continued, AND Huerta was defeated in 1914.']
+]
+},
+
+{
+chapter:'CHAPTER 7 · A NEW CONSTITUTION',
+scene:'constitution',
+parts:[
+['NARRATOR','After Huerta fell, revolutionary groups continued to fight because they disagreed about the future of Mexico.'],
+['NARRATOR','Venustiano Carranza became a leading figure in the movement that created a new Constitution.'],
+['NARRATOR','ON February 5, 1917, the Constitution was proclaimed. It included important principles about education, land and workers’ rights.'],
+['NARRATOR','The Revolution did not end all conflicts immediately. HOWEVER, the Constitution became a major result of the struggle.'],
+['NARRATOR','The Mexican Revolution changed the country and shaped its modern history.']
+]
 }
-getVoices();
-if("speechSynthesis" in window)speechSynthesis.onvoiceschanged=getVoices;
+
+];
+
+const people={
+'PORFIRIO DÍAZ':{shirt:'#7b4c3c',hat:true,moustache:true},
+'PEASANT':{shirt:'#9a6b37',hat:true},
+'FRANCISCO I. MADERO':{shirt:'#315c80',hat:false},
+'EMILIANO ZAPATA':{shirt:'#315d43',hat:true,moustache:true},
+'PANCHO VILLA':{shirt:'#8a5136',hat:true,moustache:true},
+'DÍAZ':{shirt:'#7b4c3c',hat:true,moustache:true},
+'VICTORIANO HUERTA':{shirt:'#554f70',hat:true,moustache:true},
+'VENUSTIANO CARRANZA':{shirt:'#4c6572',hat:true,moustache:true}
+};
+
+const cast={
+porfirio:['PORFIRIO DÍAZ','PEASANT'],
+madero:['FRANCISCO I. MADERO','PEASANT'],
+revolt:['EMILIANO ZAPATA','PANCHO VILLA','PEASANT'],
+exile:['DÍAZ','FRANCISCO I. MADERO'],
+zapata:['EMILIANO ZAPATA','PANCHO VILLA'],
+huerta:['VICTORIANO HUERTA','EMILIANO ZAPATA','PANCHO VILLA'],
+constitution:['VENUSTIANO CARRANZA','PEASANT']
+};
+
+function person(name){
+const p=people[name]||{};
+return `<div class="person">
+<div class="hat ${p.hat?'':'hide'}"></div>
+<div class="hair"></div>
+<div class="head">
+<i class="eye"></i>
+<i class="moustache ${p.moustache?'':'hide'}"></i>
+</div>
+<div class="arm"></div>
+<div class="arm right"></div>
+<div class="body" style="--shirt:${p.shirt||'#52745a'}"></div>
+<div class="belt"></div>
+<div class="legs"></div>
+<div class="label">${name}</div>
+</div>`;
+}
+
+const flat=[];
+story.forEach((s,si)=>s.parts.forEach((p,pi)=>flat.push({
+chapter:s.chapter,
+scene:s.scene,
+speaker:p[0],
+text:p[1],
+si,
+pi
+})));
+
+let index=0,playing=false;
+const $=id=>document.getElementById(id);
+
+function esc(s){
+return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+}
+
+function format(s){
+let t=esc(s);
+const connectors=['BUT','AND','BECAUSE','HOWEVER','WHILE','ALTHOUGH','THEREFORE','MEANWHILE'];
+connectors.forEach(w=>{
+t=t.replace(new RegExp('\\b'+w+'\\b','g'),'<strong>'+w+'</strong>');
+});
+const times=['AT','ON','IN','DURING','AFTER','BEFORE'];
+times.forEach(w=>{
+t=t.replace(new RegExp('\\b'+w+'\\b','g'),'<u>'+w+'</u>');
+});
+return t;
+}
 
 function render(){
- const c=chapters[s];
- document.getElementById("title").textContent=c.title;
- document.getElementById("chapter").textContent="Chapter "+(s+1)+" of "+chapters.length;
+const item=flat[index];
+const scene=story[item.si];
 
- const A=document.getElementById("characterA");
- const B=document.getElementById("characterB");
- const C=document.getElementById("characterC");
- const H=document.getElementById("horseGroup");
+$('sceneTitle').textContent=scene.chapter;
+$('speaker').textContent=item.speaker;
+$('line').textContent=item.text;
+$('characters').innerHTML=cast[item.scene].map(person).join('');
+$('bar').style.width=((index+1)/flat.length*100)+'%';
+$('prev').disabled=index===0;
+$('next').disabled=index===flat.length-1;
 
- [A,B,C].forEach(x=>x.setAttribute("class","character"));
- H.style.display="none";
-
- if(c.action==="village"){
- A.style.display="block";B.style.display="block";C.style.display="none";
- A.classList.add("wave");B.classList.add("walk");
- }
- if(c.action==="madero"){
- A.style.display="none";B.style.display="block";C.style.display="block";
- B.classList.add("walk2");C.classList.add("walk");
- }
- if(c.action==="revolution"){
- A.style.display="none";B.style.display="block";C.style.display="block";
- B.classList.add("walk");C.classList.add("wave");H.style.display="block";
- }
- if(c.action==="departure"){
- A.style.display="block";B.style.display="block";C.style.display="none";
- A.classList.add("walk2");B.classList.add("wave");
- }
- if(c.action==="meeting"){
- A.style.display="block";B.style.display="block";C.style.display="none";
- A.classList.add("talk");B.classList.add("wave");
- }
- if(c.action==="conflict"){
- A.style.display="block";B.style.display="block";C.style.display="block";
- A.classList.add("walk");B.classList.add("wave");C.classList.add("walk2");
- }
- if(c.action==="constitution"){
- A.style.display="block";B.style.display="block";C.style.display="none";
- A.classList.add("wave");B.classList.add("walk");
- }
- showLine();
+document.querySelectorAll('.person').forEach((el,i)=>{
+if(item.speaker!=='NARRATOR'&&cast[item.scene][i]===item.speaker){
+el.classList.add('talk');
+}
+});
 }
 
-function showLine(){
- let line=chapters[s].lines[l];
- document.getElementById("speaker").textContent=line[0];
- document.getElementById("text").innerHTML=line[1];
- document.getElementById("status").textContent=
- "Chapter "+(s+1)+" | Dialogue "+(l+1)+" of "+chapters[s].lines.length;
+function speakCurrent(){
+if(!('speechSynthesis'in window)){
+alert('Text-to-speech is not supported in this browser.');
+return;
+}
+speechSynthesis.cancel();
+const item=flat[index];
+const u=new SpeechSynthesisUtterance(item.text);
+u.lang='en-US';
+u.rate=.88;
+u.pitch=1;
+const voices=speechSynthesis.getVoices();
+const english=voices.find(v=>v.lang&&v.lang.toLowerCase().startsWith('en'));
+if(english)u.voice=english;
+speechSynthesis.speak(u);
 }
 
-function speak(){
- if(!("speechSynthesis" in window))return;
- speechSynthesis.cancel();
- let temp=document.createElement("div");
- temp.innerHTML=chapters[s].lines[l][1];
- let spoken=temp.textContent;
- let utter=new SpeechSynthesisUtterance(spoken);
- utter.lang="en-US";utter.rate=.9;
- let index=(s+l)%Math.max(1,englishVoices.length);
- if(englishVoices.length)utter.voice=englishVoices[index];
- utter.onend=()=>{if(playing)nextAuto()};
- speechSynthesis.speak(utter);
-}
-
-function nextAuto(){
- if(l<chapters[s].lines.length-1)l++;
- else if(s<chapters.length-1){s++;l=0;render();}
- else{
- playing=false;
- document.getElementById("status").textContent="The story is complete!";
- document.getElementById("highlights").style.display="block";
- document.getElementById("highlights").scrollIntoView({behavior:"smooth"});
- return;
- }
- showLine();speak();
-}
-function play(){
- if(playing)return;
- playing=true;
- speak();
-}
-function pause(){
- playing=false;
- speechSynthesis.pause();
- document.getElementById("status").textContent="Paused";
-}
-function stop(){
- playing=false;speechSynthesis.cancel();l=0;s=0;render();
-}
 function next(){
- playing=false;speechSynthesis.cancel();
- if(l<chapters[s].lines.length-1)l++;
- else if(s<chapters.length-1){s++;l=0;render();}
- showLine();
+if(index<flat.length-1){
+index++;
+render();
+if(playing)speakCurrent();
+}else{
+playing=false;
+$('play').textContent='▶ Play story';
 }
-function previous(){
- playing=false;speechSynthesis.cancel();
- if(l>0)l--;
- else if(s>0){s--;l=chapters[s].lines.length-1;render();}
- showLine();
 }
 
-highlights.forEach((h,i)=>{
- let d=document.createElement("div");
- d.className="card";
- d.innerHTML="<h3>"+(i+1)+". "+h[0]+"</h3><strong>"+h[1]+"</strong><p>"+h[2]+"</p>";
- document.getElementById("highlights").appendChild(d);
-});
+function play(){
+if(playing){
+playing=false;
+speechSynthesis.cancel();
+$('play').textContent='▶ Play story';
+return;
+}
 
-chapters.forEach((c,i)=>{
- let d=document.createElement("div");
- d.className="card";
- let content="<h3>Chapter "+(i+1)+": "+c.title+"</h3>";
- c.lines.forEach(line=>{
- content+="<p><strong>"+line[0]+":</strong> "+line[1]+"</p>";
- });
- d.innerHTML=content;
- document.getElementById("transcript").appendChild(d);
-});
+playing=true;
+$('play').textContent='Ⅱ Pause story';
 
-document.getElementById("highlights").style.display="block";
-document.getElementById("transcript").style.display="block";
+const run=()=>{
+if(!playing)return;
+const item=flat[index];
+const u=new SpeechSynthesisUtterance(item.text);
+u.lang='en-US';
+u.rate=.88;
+
+const v=speechSynthesis.getVoices().find(v=>v.lang&&v.lang.toLowerCase().startsWith('en'));
+if(v)u.voice=v;
+
+u.onend=()=>{
+if(!playing)return;
+if(index<flat.length-1){
+index++;
+render();
+run();
+}else{
+playing=false;
+$('play').textContent='▶ Play story';
+}
+};
+
+speechSynthesis.cancel();
+speechSynthesis.speak(u);
+};
+
+run();
+}
+
+$('prev').onclick=()=>{
+playing=false;
+speechSynthesis.cancel();
+index=Math.max(0,index-1);
+$('play').textContent='▶ Play story';
+render();
+};
+
+$('next').onclick=()=>{
+playing=false;
+speechSynthesis.cancel();
+$('play').textContent='▶ Play story';
+next();
+};
+
+$('play').onclick=play;
+
+$('stop').onclick=()=>{
+playing=false;
+speechSynthesis.cancel();
+$('play').textContent='▶ Play story';
+};
+
+$('transcript').innerHTML=flat.map(x=>
+`<p><b>${x.speaker}:</b> ${format(x.text)}</p>`
+).join('');
+
 render();
 </script>
 </body>
