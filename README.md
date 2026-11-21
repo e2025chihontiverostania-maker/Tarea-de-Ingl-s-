@@ -1,7 +1,10 @@
 <Escuela Normal Superior Prof. José E. Medrano R.>
-<Teacher: PANDURO MIJAREZ TALINA
-VANESSA>
-<Alumna: Ontiveros Quintana Tania Jocelin>
+
+Teacher: PANDURO MIJAREZ TALINA
+VANESSA
+
+Alumna: Ontiveros Quintana Tania Jocelin
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
