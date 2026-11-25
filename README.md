@@ -5,6 +5,10 @@ VANESSA
 
 Alumna: Ontiveros Quintana Tania Jocelin
 
+Especialidad: Biología
+
+Grado: 3ro
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
